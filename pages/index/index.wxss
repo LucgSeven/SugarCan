@@ -1,0 +1,78 @@
+/**index.wxss**/
+.games {
+  margin: 30rpx 20rpx;
+}
+.games .title {
+    display: flex;
+    margin-bottom: 20rpx;
+}
+.games .list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.games .list .item{
+  background-color: #fff;
+}
+.games .list .item .img {
+    position: relative;
+    vertical-align: top;
+    width: 300rpx;
+    height: 300rpx;
+}
+
+.games .list .item .list-media {
+    position: relative;
+    width: 300rpx;
+    height: 300rpx;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.games .list .item .list-media:after {
+    content: '';
+    position: absolute;
+    right: 10rpx;
+    bottom: 10rpx;
+    width: 48rpx;
+    height: 48rpx;
+    background: green;
+    background-size: contain;
+}
+
+.games .list .item .list-media .list-count {
+    position: absolute;
+    left: 10rpx;
+    bottom: 10rpx;
+    font-size: 24rpx;
+    color: #fff;
+    z-index: 10;
+}
+
+.games .list .item .list-media .list-count:before {
+    display: inline-block;
+    margin-right: 6rpx;
+    content: '';
+    width: 20rpx;
+    height: 20rpx;
+    background: red;
+    background-size: contain;
+}
+
+.games .list .item .list-text {
+    display: block;
+    padding: 10rpx 14rpx;
+    font-size: 28rpx;
+    width: 322rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.games .list .gameItem {
+    margin-bottom: 20rpx;
+}
+.games .list .list-author {
+    display: block;
+    padding: 0rpx 14rpx 10rpx;
+    font-size: 24rpx;
+}

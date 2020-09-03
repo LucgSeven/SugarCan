@@ -1,0 +1,4 @@
+<!--pages/testpage/testpage.wxml-->
+<movable-area class="movable-area">
+<movable-view class="movable-view" direction="all">hehe</movable-view>
+</movable-area>

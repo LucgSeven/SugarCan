@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class="games">
+    <text class="title">小游戏清单</text>
+     <view class="list">
+       <view class="item gameItem" wx:for="{{gameList}}" wx:key="id" data-id="{{item.id}}" data-gameurl="{{item.gameUrl}}" bindtap="toGameLoad">
+         <view class="list-media">
+           <image class="img" src="{{item.picUrl}}"></image>
+           <text class="list-count">{{item.accessnum}}</text>
+         </view>
+         <text class="list-text">{{item.gameName}}</text>
+         <text class="list-author">{{item.gameDesc}}</text>
+       </view>
+     </view>
+</view>

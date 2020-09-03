@@ -1,0 +1,38 @@
+{
+  "pages": [
+    
+    "pages/index/index",
+    "pages/testpage/testpage",
+    "pages/personal/personal",
+    "pages/help/help"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "糖罐子",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#ff5777",
+    "color": "#666",
+    "backgroundColor": "#f8e1d8",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "common/cl.png",
+        "selectedIconPath": "common/cm.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "iconPath": "common/cn.png",
+        "selectedIconPath": "common/co.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

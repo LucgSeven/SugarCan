@@ -1,0 +1,58 @@
+<!--pages/personal/personal.wxml-->
+<view class="container">
+	<view class="bg"></view>
+	<view class="info">
+		<button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button>
+		<block wx:else>
+			<image class="avatar" mode="aspectFill" src="{{userInfo.avatarUrl}}"></image>
+			<text class="nick">{{userInfo.nickName}}</text>
+		</block>
+	</view>
+
+	<view class="gutter"></view>
+
+	<view class="operation">
+		<navigator url="/pages/order/order?n=2" class="single">
+			<image mode="aspectFit" class="icon" src="../../common/right.png" />
+			<text class="text">成就1</text>
+		</navigator>
+		<navigator url="/pages/order/order?n=3" class="single">
+			<image mode="aspectFit" class="icon" src="../../common/right.png" />
+			<text class="text">成就2</text>
+		</navigator>
+		<navigator url="/pages/order/order?n=3" class="single">
+			<image mode="aspectFit" class="icon" src="../../common/right.png" />
+			<text class="text">成就3</text>
+		</navigator>
+	</view>
+	<view class="operation">
+		<navigator url="/pages/order/order?n=2" class="single">
+			<image mode="aspectFit" class="icon" src="../../common/right.png" />
+			<text class="text">成就4</text>
+		</navigator>
+		<navigator url="/pages/order/order?n=3" class="single">
+			<image mode="aspectFit" class="icon" src="../../common/right.png" />
+			<text class="text">成就5</text>
+		</navigator>
+		<navigator url="/pages/order/order?n=3" class="single">
+			<image mode="aspectFit" class="icon" src="../../common/right.png" />
+			<text class="text">成就6</text>
+		</navigator>
+	</view>
+
+	<view class="gutter"></view>
+
+	<view class="list">
+		<view class="item" bindtap="to_help">
+			<image mode="aspectFit" class="iconrow" src="../../common/mine_help_center.png" />
+			<text class="textrow">帮助中心</text>
+			<image mode="aspectFit" class="iconenter" src="../../common/right.png" />
+		</view>
+		<view class="split-line2"></view>
+		<view class="item" bindtap="clear_storage">
+			<image mode="aspectFit" class="iconrow" src="../../common/camera_switch_camera_ic.png" />
+			<text class="textrow">清除缓存</text>
+			<image mode="aspectFit" class="iconenter" src="../../common/right.png" />
+		</view>
+	</view>
+</view>
