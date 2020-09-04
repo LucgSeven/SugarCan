@@ -4,6 +4,10 @@ var Main = require("./main.js");
 
 Page({ 
   data: {
+    originBestScore: 0,
+    originBestNum: 0,
+    touchWeight: 0,
+    touchHeight: 0,
     hidden: false,
     start: "开始游戏",
     num: [],
@@ -16,6 +20,10 @@ Page({
   },
   // 页面渲染完成
   onReady: function () {
+    this.setData({
+      touchWeight: wx.getSystemInfoSync().windowWidth,
+      touchHeight: wx.getSystemInfoSync().windowHeight * 0.93 -100,
+    });
     if(!wx.getStorageSync("highScore"))
       wx.setStorageSync('highScore', 0);
 
@@ -28,7 +36,9 @@ Page({
     this.setData({
       main: main,
       bestScore: wx.getStorageSync('highScore'),
-      bestNum: wx.getStorageSync('highNum')
+      bestNum: wx.getStorageSync('highNum'),
+      originBestScore: wx.getStorageSync('highScore'),
+      originBestNum: wx.getStorageSync('highNum'),
     });
     this.data.main.__proto__ = main.__proto__;
     
@@ -36,6 +46,7 @@ Page({
       hidden: true,
       over: false,
       maxNum: 0,
+      score: 0,
       num: this.data.main.board.grid
     });  
   },
@@ -44,23 +55,28 @@ Page({
       over: true 
     });
  
-    if (this.data.socre > this.data.bestScore) {
+    if (this.data.score > this.data.originBestScore) {
       this.setData({
-        endMsg: '创造新纪录！' 
+        endMsg: '创造新纪录！',
+        bestScore: this.data.score
       }); 
-      wx.setStorageSync('highScore', this.data.socre);
+      wx.setStorageSync('highScore', this.data.score);
     } else {
       this.setData({
         endMsg: '游戏结束！'
       }); 
+      if (this.data.maxNum >= 2048) {
+        this.setData({ 
+          endMsg: '恭喜达到2048！',
+          bestNum: this.data.maxNum
+        });
+      }
     }
 
-    if (this.data.maxNum >= 2048) {
+    if (this.data.maxNum > this.data.originBestNum) {
       this.setData({ 
-        endMsg: '恭喜达到2048！'
+        bestNum: this.data.maxNum
       });
-      wx.setStorageSync('highNum', this.data.maxNum);
-    } else if (this.data.maxNum > this.data.bestNum) {
       wx.setStorageSync('highNum', this.data.maxNum);
     }
   },
@@ -114,12 +130,22 @@ Page({
       maxNum: max,
       score: score
     });
+    if (this.data.maxNum > this.data.bestNum) {
+      this.setData({
+        bestNum: this.data.maxNum
+      });
+    }
+    if (this.data.score > this.data.bestScore) {
+      this.setData({
+        bestScore: this.data.score
+      });
+    }
   },
   onShareAppMessage: function() {
     return {
       title: '2048小游戏',
       desc: '来试试你能达到多少分',
-      path: '/page/user?id=123'
+      path: '"pages/games/2048/2048"'
     }
   }
 })

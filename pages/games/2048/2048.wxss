@@ -1,4 +1,13 @@
 /* pages/games/2048/2048.wxss */
+page {
+  -webkit-touch-callout: none;/* 禁用系统默认菜单 */
+  -ms-touch-callout: none;
+  -webkit-user-select: none;/* css控制文字不能被选中 */
+  -moz-user-select: none;
+  -ms-user-select: none;/* 当触控事件发生在元素上时，不进行任何操作 */
+  -ms-touch-action: none;
+  touch-action: none;
+}
 .container {
   color: #776e65;
   background-color: #faf8ee;
@@ -8,11 +17,11 @@
 .head {
   text-align: center;
   position: absolute;
-  top: 7vh;
+  top: 3vh;
 }
 .lside {
   width: 130px;
-  height: 100px;
+  height: 120px;
   box-sizing: border-box;
   float: left;
   position: relative;
@@ -32,8 +41,22 @@
   border-radius: 5px;
   width: 130px;
   text-align: center;
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 35px;
+  left: 0;
+}
+.stop {
+  font-size: 20px;
+  background-color: #bbada0;
+  color: rgb(65, 34, 34);
+  border-radius: 5px;
+  width: 130px;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
   font-weight: bold;
   position: absolute;
   bottom: 0;
@@ -43,7 +66,7 @@
   background-color: #bbada0;
   float: right;
   width: 100px;
-  height: 100px; 
+  height: 120px; 
   padding-top: 10px;
   box-sizing: border-box;
   border-radius: 5px; 
@@ -52,11 +75,36 @@
 .rside text {
   display: block;
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
 }
 .score {
   color: #fff;
+}
+.lScore {
+  width:130px;
+}
+.best {
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  display: block;
+  text-align: left;
+  font-size: 13px;
+  font-weight: bold;
+  height: 26px;
+  line-height: 26px;
+}
+.bestScore {
+  box-sizing: border-box;
+  float: right;
+  position: relative;
+  display: block;
+  text-align: right;
+  color: #f00;
+  font-size: 18px;
+  height: 26px;
+  line-height: 26px;
 }
 /* =========================== game ====================  */
 .game {
@@ -71,13 +119,6 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-touch-callout: none;/* 禁用系统默认菜单 */
-  -ms-touch-callout: none;
-  -webkit-user-select: none;/* css控制文字不能被选中 */
-  -moz-user-select: none;
-  -ms-user-select: none;/* 当触控事件发生在元素上时，不进行任何操作 */
-  -ms-touch-action: none;
-  touch-action: none;
 }
 .cell {
   width: 19vw;
@@ -145,7 +186,7 @@
 }  
 .game-over {
   position: absolute;
-  z-index: 3;
+  z-index: 999;
   background-color: rgba(255, 255, 255, 0.8);
   width: 100%;
   height: 100%;
@@ -165,4 +206,9 @@
 .pro {
   font-weight: bold;
   font-size: 30px;
+}
+.touPad {
+  z-index: 998;
+  position:absolute;
+  bottom: 0;
 }

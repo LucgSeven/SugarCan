@@ -1,4 +1,51 @@
-<!--pages/testpage/testpage.wxml-->
-<movable-area class="movable-area">
-<movable-view class="movable-view" direction="all">hehe</movable-view>
-</movable-area>
+<!--pages/games/2048/2048.wxml-->
+<view class='container'> 
+  <!-- loading -->
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
+
+  <view class='head'>
+    <view class='lside'>
+      <text class='title' bindtap='gameOver'>2048</text>
+      <text class='play' bindtap='gameStart'>{{start}}</text>
+    </view>
+    <view class='rside'>
+      <text>score <text class='score'>{{score}}</text></text>
+    </view>
+  </view>
+
+  <view class="touPad" style="width:{{touchWeight}}px;height:{{touchHeight}}px;" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd"></view>
+
+  <view class="game"> 
+    <!-- 矩阵 -->
+    <movable-area class="mainPad" hidden='{{over}}'>
+      <movable-view class="cell cell-con-{{num[0][0]}}" x="0*19" y="0*19">{{num[0][0]}}</movable-view>
+      <movable-view class="cell cell-con-{{num[0][1]}}" x="0*19" y="1*19">{{num[0][1]}}</movable-view>
+      <movable-view class="cell cell-con-{{num[0][2]}}" x="0*19" y="2*19">{{num[0][2]}}</movable-view>
+      <movable-view class="cell cell-con-{{num[0][3]}}" x="0*19" y="3*19">{{num[0][3]}}</movable-view>
+      <movable-view class="cell cell-con-{{num[1][0]}}" x="19" y="0*19">{{num[1][0]}}</movable-view>
+      <movable-view class="cell cell-con-{{num[1][1]}}" x="19" y="1*19">{{num[1][1]}}</movable-view>
+      <movable-view class="cell cell-con-{{num[1][2]}}" x="19" y="2*19">{{num[1][2]}}</movable-view>
+      <movable-view class="cell cell-con-{{num[1][3]}}" x="19" y="3*19">{{num[1][3]}}</movable-view>
+      <movable-view class="cell cell-con-{{num[2][0]}}" x="2*19" y="0*19">{{num[2][0]}}</movable-view>
+      <movable-view class="cell cell-con-{{num[2][1]}}" x="2*19" y="1*19">{{num[2][1]}}</movable-view>
+      <movable-view class="cell cell-con-{{num[2][2]}}" x="2*19" y="2*19">{{num[2][2]}}</movable-view>
+      <movable-view class="cell cell-con-{{num[2][3]}}" x="2*19" y="3*19">{{num[2][3]}}</movable-view>
+      <movable-view class="cell cell-con-{{num[3][0]}}" x="3*19" y="0*19">{{num[3][0]}}</movable-view>
+      <movable-view class="cell cell-con-{{num[3][1]}}" x="3*19" y="1*19">{{num[3][1]}}</movable-view>
+      <movable-view class="cell cell-con-{{num[3][2]}}" x="3*19" y="2*19">{{num[3][2]}}</movable-view>
+      <movable-view class="cell cell-con-{{num[3][3]}}" x="3*19" y="3*19">{{num[3][3]}}</movable-view>
+
+    </movable-area>
+
+    <!-- game over -->
+    <view class='game-over' hidden='{{!over}}'>
+      <text class='nowScore'>历史最高数字：{{bestNum}}</text>
+      <text class='nowScore'>历史最高分：{{bestScore}}</text>
+      <text class='nowScore'>本次最高数字：{{maxNum}}</text>
+      <text class='nowScore'>本次成绩：{{score}}</text>
+      <text class='pro'>{{endMsg}}</text> 
+    </view> 
+  </view>
+</view>

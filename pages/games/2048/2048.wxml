@@ -7,17 +7,31 @@
 
   <view class='head'>
     <view class='lside'>
-      <text class='title'>2048</text>
+      <view class='lScore'>
+        <view class='lLine'>
+          <text class="best">历史最高分</text>
+          <text class='bestScore'>{{bestScore}}</text>
+        </view>
+        <view class='lLine'>
+          <text class="best">历史最大方块</text>
+          <text class='bestScore'>{{bestNum}}</text>
+        </view>
+        
+      </view>
       <text class='play' bindtap='gameStart'>{{start}}</text>
+      <text class='stop' bindtap='gameOver'>游戏结束</text>
     </view>
     <view class='rside'>
-      <text>score <text class='score'>{{score}}</text></text>
+      <text>本次得分 <text class='score'>{{score}}</text></text>
+      <text>最大方块 <text class='score'>{{maxNum}}</text></text>
     </view>
   </view>
 
+  <view class="touPad" style="width:{{touchWeight}}px;height:{{touchHeight}}px;" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd"></view>
+
   <view class="game"> 
     <!-- 矩阵 -->
-    <view bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+    <view>
       <view class='row' wx:for="{{num}}" wx:for-item="row" wx:key="key" >
         <view class='cell' wx:for="{{row}}" wx:for-item="cell" wx:key="key">
           <view class='cell-con cell-con-{{cell}}'>
@@ -29,9 +43,9 @@
 
     <!-- game over -->
     <view class='game-over' hidden='{{!over}}'>
-      <text class='nowScore'>历史最高数字：{{bestNum}}</text>
+      <text class='nowScore'>历史最大方块：{{bestNum}}</text>
       <text class='nowScore'>历史最高分：{{bestScore}}</text>
-      <text class='nowScore'>本次最高数字：{{maxNum}}</text>
+      <text class='nowScore'>本次最大方块：{{maxNum}}</text>
       <text class='nowScore'>本次成绩：{{score}}</text>
       <text class='pro'>{{endMsg}}</text> 
     </view> 
