@@ -1,0 +1,34 @@
+<!--pages/games/snake/snake.wxml-->
+<view id="snake">
+  <view class="score">
+    <radio-group class="speedRadio" bindchange="speedChange">
+        <view><label><radio color="#f67c5f" value="300" />入门级</label></view>
+        <view><label><radio color="#f67c5f" value="250" checked="true"/>普通级</label></view>
+        <view><label><radio color="#f67c5f" value="200" />进阶级</label></view>
+        <view><label><radio color="#f67c5f" value="100" />地狱级</label></view>
+      </radio-group>
+
+    <view class="score-box score-detail">
+      <text class="scoreDes">得分</text>
+      <text class="scoreNum">{{score}}</text>
+      <text class="scoreDes">最高得分</text>
+      <text class="scoreNum">{{maxScore}}</text>
+    </view>
+  </view>
+
+  <view class="ground">
+    <view wx:for="{{ground}}" wx:for-item="cols" class="rows" wx:key="key">
+      <view wx:for="{{cols}}" class="box box_{{item}}" wx:key="key"></view>
+    </view>
+  </view>
+
+<view class="touchPad" style="width:{{touchWeight}}px;height:{{touchHeight}}px;" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd"></view>
+
+  <view class='game-over' hidden='{{notEnded}}'>
+      <text class='pro'>游戏结束！</text>
+      <text class='nowScore'>本次得分：{{score}}</text>
+      <text class='nowScore'>历史最高得分：{{maxScore}}</text>
+      <text class='pro'></text>
+      <text class='restart' bindtap='modalChange'>重新开始</text>
+    </view> 
+</view>

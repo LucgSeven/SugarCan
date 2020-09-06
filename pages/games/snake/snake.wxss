@@ -1,0 +1,111 @@
+/* pages/games/snake/snake.wxss */
+page {
+  -webkit-touch-callout: none;/* 禁用系统默认菜单 */
+  -ms-touch-callout: none;
+  -webkit-user-select: none;/* css控制文字不能被选中 */
+  -moz-user-select: none;
+  -ms-user-select: none;/* 当触控事件发生在元素上时，不进行任何操作 */
+  -ms-touch-action: none;
+  touch-action: none;
+}
+#snake{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.score{
+  display: relative;
+  margin: 20rpx;
+}
+.speedRadio {
+  background-color: #aca095;
+  width: 130px;
+  height: 120px; 
+  padding-top: 10px;
+  box-sizing: border-box;
+  border-radius: 5px; 
+  opacity: 0.7;
+  text-align: center;
+  margin: 20rpx;
+  float: left;
+  margin-left: 40rpx;
+}
+.score-box{
+  width: 150px;
+  height: 120px;
+  margin: 20rpx;
+  border-radius: 5px;
+  float: right;
+  margin-right: 50rpx;
+}
+.score-detail{
+  background-color: #aca095;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0.7;
+}
+
+.ground{
+  width: 660rpx;
+  height: 840rpx;
+  margin-left: 60rpx;
+}
+.rows{
+  width: 660rpx;
+  height: 15rpx;
+}
+.box{
+  width: 15rpx;
+  height: 15rpx;
+  float: left;
+  background-color: #aca095;
+}
+.box_1{
+  background-color: red;
+}
+.box_2{
+  background-color: green;
+}
+.game-over {
+  position: absolute;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  padding-top: 45vw;
+  box-sizing: border-box;
+} 
+.game-over text {
+  display: block;
+}
+.nowScore {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.pro {
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.touchPad {
+  z-index: 998;
+  position:absolute;
+  bottom: 0;
+}
+.restart {
+  font-size: 24px;
+  background-color: #bbada0;
+  color: #fff;
+  border-radius: 5px;
+  width: 130px;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 auto;
+}

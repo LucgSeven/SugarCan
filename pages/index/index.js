@@ -18,8 +18,8 @@ Page({
         picUrl:"../../common/camera_switch_camera_ic.png",
         accessnum:"2",
         gameName:"贪吃蛇",
-        gameDesc:"asad1",
-        gameUrl:""
+        gameDesc:"这个也可以玩了！！",
+        gameUrl:"/pages/games/snake/snake"
       },
       {
         id:3,

@@ -22,8 +22,8 @@
       <text class='stop' bindtap='gameOver'>游戏结束</text>
     </view>
     <view class='rside'>
-      <text>本次得分 <text class='score'>{{score}}</text></text>
-      <text>最大方块 <text class='score'>{{maxNum}}</text></text>
+      <text>本次得分</text><text class='score'>{{score}}</text>
+      <text>最大方块</text><text class='score'>{{maxNum}}</text>
     </view>
   </view>
 
