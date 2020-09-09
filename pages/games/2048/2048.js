@@ -24,21 +24,21 @@ Page({
       touchWeight: wx.getSystemInfoSync().windowWidth,
       touchHeight: wx.getSystemInfoSync().windowHeight * 0.93 -100,
     });
-    if(!wx.getStorageSync("highScore"))
-      wx.setStorageSync('highScore', 0);
+    if(!wx.getStorageSync("2048-highScore"))
+      wx.setStorageSync('2048-highScore', 0);
 
-    if(!wx.getStorageSync("highNum"))
-      wx.setStorageSync('highNum', 0);
+    if(!wx.getStorageSync("2048-highNum"))
+      wx.setStorageSync('2048-highNum', 0);
     this.gameStart();
   },
   gameStart: function() {  // 游戏开始
     var main = new Main(4);
     this.setData({
       main: main,
-      bestScore: wx.getStorageSync('highScore'),
-      bestNum: wx.getStorageSync('highNum'),
-      originBestScore: wx.getStorageSync('highScore'),
-      originBestNum: wx.getStorageSync('highNum'),
+      bestScore: wx.getStorageSync('2048-highScore'),
+      bestNum: wx.getStorageSync('2048-highNum'),
+      originBestScore: wx.getStorageSync('2048-highScore'),
+      originBestNum: wx.getStorageSync('2048-highNum'),
     });
     this.data.main.__proto__ = main.__proto__;
     
@@ -60,7 +60,7 @@ Page({
         endMsg: '创造新纪录！',
         bestScore: this.data.score
       }); 
-      wx.setStorageSync('highScore', this.data.score);
+      wx.setStorageSync('2048-highScore', this.data.score);
     } else {
       this.setData({
         endMsg: '游戏结束！'
@@ -77,7 +77,7 @@ Page({
       this.setData({ 
         bestNum: this.data.maxNum
       });
-      wx.setStorageSync('highNum', this.data.maxNum);
+      wx.setStorageSync('2048-highNum', this.data.maxNum);
     }
   },
   // 触摸

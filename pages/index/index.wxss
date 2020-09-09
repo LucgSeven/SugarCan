@@ -1,35 +1,39 @@
 /**index.wxss**/
 .games {
-  margin: 30rpx 20rpx;
+    margin: 30rpx 20rpx;
 }
+
 .games .title {
     display: flex;
     margin-bottom: 20rpx;
 }
+
 .games .list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
-.games .list .item{
-  background-color: #fff;
+
+.games .list .item {
+    background-color: #fff;
 }
+
 .games .list .item .img {
     position: relative;
     vertical-align: top;
-    width: 300rpx;
-    height: 300rpx;
+    width: 320rpx;
+    height: 320rpx;
 }
 
 .games .list .item .list-media {
     position: relative;
-    width: 300rpx;
-    height: 300rpx;
+    width: 320rpx;
+    height: 320rpx;
     box-sizing: border-box;
     overflow: hidden;
 }
 
-.games .list .item .list-media:after {
+/* .games .list .item .list-media:after {
     content: '';
     position: absolute;
     right: 10rpx;
@@ -38,7 +42,7 @@
     height: 48rpx;
     background: green;
     background-size: contain;
-}
+} */
 
 .games .list .item .list-media .list-count {
     position: absolute;
@@ -62,17 +66,21 @@
 .games .list .item .list-text {
     display: block;
     padding: 10rpx 14rpx;
-    font-size: 28rpx;
-    width: 322rpx;
+    font-size: 30rpx;
+    width: 300rpx;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 .games .list .gameItem {
+    margin-top: 10rpx;
     margin-bottom: 20rpx;
+    margin-left: 10rpx;
 }
+
 .games .list .list-author {
     display: block;
     padding: 0rpx 14rpx 10rpx;
-    font-size: 24rpx;
+    font-size: 22rpx;
 }

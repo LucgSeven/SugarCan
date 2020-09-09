@@ -2,17 +2,33 @@
 <view id="snake">
   <view class="score">
     <radio-group class="speedRadio" bindchange="speedChange">
-        <view><label><radio color="#f67c5f" value="300" />入门级</label></view>
-        <view><label><radio color="#f67c5f" value="250" checked="true"/>普通级</label></view>
-        <view><label><radio color="#f67c5f" value="200" />进阶级</label></view>
-        <view><label><radio color="#f67c5f" value="100" />地狱级</label></view>
-      </radio-group>
+      <view><label>
+          <radio color="#f67c5f" value="300" checked="{{speed == 300}}" />入门级</label></view>
+      <view><label>
+          <radio color="#f67c5f" value="250" checked="{{speed == 250}}" />普通级</label></view>
+      <view><label>
+          <radio color="#f67c5f" value="200" checked="{{speed == 200}}" />进阶级</label></view>
+      <view><label>
+          <radio color="#f67c5f" value="100" checked="{{speed == 100}}" />地狱级</label></view>
+    </radio-group>
 
     <view class="score-box score-detail">
       <text class="scoreDes">得分</text>
       <text class="scoreNum">{{score}}</text>
       <text class="scoreDes">最高得分</text>
       <text class="scoreNum">{{maxScore}}</text>
+    </view>
+
+    <view class="opration-box">
+      <cover-image class="opration musicSwitch" src="../../../common/snake/musicOff.png" bindtap='musicOn'
+        hidden='{{isMusicOn}}'></cover-image>
+      <cover-image class="opration musicSwitch" src="../../../common/snake/musicOn.png" bindtap='musicOff'
+        hidden='{{!isMusicOn}}'></cover-image>
+      <cover-image class="opration restart" src="../../../common/snake/restart.png" bindtap='restart'></cover-image>
+      <cover-image class="opration pause" src="../../../common/snake/pause.png" bindtap='pause' hidden='{{isPause}}'>
+      </cover-image>
+      <cover-image class="opration pauseEnd" src="../../../common/snake/pauseEnd.png" bindtap='pauseEnd'
+        hidden='{{!isPause}}'></cover-image>
     </view>
   </view>
 
@@ -22,13 +38,14 @@
     </view>
   </view>
 
-<view class="touchPad" style="width:{{touchWeight}}px;height:{{touchHeight}}px;" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd"></view>
+  <view class="touchPad" style="width:{{touchWeight}}px;height:{{touchHeight}}px;" bindtouchstart="touchStart"
+    bindtouchmove="touchMove" bindtouchend="touchEnd"></view>
 
   <view class='game-over' hidden='{{notEnded}}'>
-      <text class='pro'>游戏结束！</text>
-      <text class='nowScore'>本次得分：{{score}}</text>
-      <text class='nowScore'>历史最高得分：{{maxScore}}</text>
-      <text class='pro'></text>
-      <text class='restart' bindtap='modalChange'>重新开始</text>
-    </view> 
+    <text class='pro'>游戏结束！</text>
+    <text class='nowScore'>本次得分：{{score}}</text>
+    <text class='nowScore'>历史最高得分：{{maxScore}}</text>
+    <text class='pro'></text>
+    <text class='restartBtn' bindtap='modalChange'>重新开始</text>
+  </view>
 </view>

@@ -1,0 +1,11 @@
+<!--pages/authpage/authpage.wxml-->
+<view class="wx-popup" hidden="{{flag}}">
+  <view class='popup-container'>
+    <view class="wx-popup-title">用户信息授权</view>
+    <view class="wx-popup-con">为了更好的游戏体验，需要您授权获取用户信息（昵称、头像等）。</view>
+    <view class="wx-popup-btn">
+      <button class="btn-no" bindtap='_cancel'>取消</button>
+      <button class="btn-ok" open-type="getUserInfo" bindgetuserinfo="_afterGetUserInfo">授权</button>
+    </view>
+  </view>
+</view>
