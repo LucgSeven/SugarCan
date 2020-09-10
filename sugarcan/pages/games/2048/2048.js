@@ -1,6 +1,8 @@
 // pages/games/2048/2048.js
-var Board = require("./grid.js");
 var Main = require("./main.js");
+const app = getApp();
+const db = wx.cloud.database();
+const userScores = db.collection('user_score');
 
 Page({ 
   data: {
@@ -10,9 +12,6 @@ Page({
     touchHeight: 0,
     hidden: false,
     start: "开始游戏",
-    num: [],
-    positionX: [],
-    positionY: [],
     num: [],
     maxNum: 0,
     score: 0,
@@ -27,21 +26,23 @@ Page({
       touchWeight: wx.getSystemInfoSync().windowWidth,
       touchHeight: wx.getSystemInfoSync().windowHeight * 0.93 -100,
     });
-    if(!wx.getStorageSync("highScore"))
-      wx.setStorageSync('highScore', 0);
+    if(!wx.getStorageSync("2048-highScore"))
+      wx.setStorageSync('2048-highScore', 0);
 
-    if(!wx.getStorageSync("highNum"))
-      wx.setStorageSync('highNum', 0);
+    if(!wx.getStorageSync("2048-highNum"))
+      wx.setStorageSync('2048-highNum', 0);
+    
+    this.insertOrUpdateCloudData();
     this.gameStart();
   },
   gameStart: function() {  // 游戏开始
     var main = new Main(4);
     this.setData({
       main: main,
-      bestScore: wx.getStorageSync('highScore'),
-      bestNum: wx.getStorageSync('highNum'),
-      originBestScore: wx.getStorageSync('highScore'),
-      originBestNum: wx.getStorageSync('highNum'),
+      bestScore: wx.getStorageSync('2048-highScore'),
+      bestNum: wx.getStorageSync('2048-highNum'),
+      originBestScore: wx.getStorageSync('2048-highScore'),
+      originBestNum: wx.getStorageSync('2048-highNum'),
     });
     this.data.main.__proto__ = main.__proto__;
     
@@ -63,7 +64,7 @@ Page({
         endMsg: '创造新纪录！',
         bestScore: this.data.score
       }); 
-      wx.setStorageSync('highScore', this.data.score);
+      wx.setStorageSync('2048-highScore', this.data.score);
     } else {
       this.setData({
         endMsg: '游戏结束！'
@@ -80,8 +81,59 @@ Page({
       this.setData({ 
         bestNum: this.data.maxNum
       });
-      wx.setStorageSync('highNum', this.data.maxNum);
+      wx.setStorageSync('2048-highNum', this.data.maxNum);
     }
+    this.insertOrUpdateCloudData();
+  },
+  insertOrUpdateCloudData() {
+    var highScore = wx.getStorageSync('2048-highScore');
+    var highNum = wx.getStorageSync('2048-highNum');
+    if (!highScore || !highNum) {
+      return;
+    }
+    var userInfo = app.globalData.userInfo;
+
+    userScores.where({
+      gameId: '1',
+      _openid: app.globalData.openId
+    }).get({
+      success: function(res) {
+        var datas = res.data;
+        if (datas.length < 1) {
+          userScores.add({
+            data:{
+              gameId : "1",
+              gender : userInfo.gender,
+              nickName : userInfo.nickName,
+              maxScore : highScore,
+              secondMaxScore : highNum,
+              operateTime : new Date()
+            },
+            success: function(res) {
+            }
+          });
+          return;
+        }
+        
+        var record = datas[0];
+        if (highScore > record.maxScore || highNum > record.secondMaxScore) {
+          userScores.doc(record._id).update({
+            data:{
+              maxScore : highScore,
+              secondMaxScore : highNum,
+              operateTime : new Date()
+            },
+            success: function(res) {
+            }
+          });
+          return;
+        } else if (highScore != record.maxScore || highNum != record.secondMaxScore) {
+          wx.setStorageSync('2048-highScore', record.maxScore);
+          wx.setStorageSync('2048-highNum', record.secondMaxScore);
+        }
+      }
+    })
+    
   },
   // 触摸
   touchStartX: 0,

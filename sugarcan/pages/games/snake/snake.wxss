@@ -39,7 +39,7 @@ page {
 }
 
 .score-box {
-  width: 210rpx;
+  width: 200rpx;
   height: 120px;
   margin: 20rpx;
   border-radius: 5px;
@@ -78,20 +78,20 @@ page {
 }
 
 .ground {
-  width: 660rpx;
-  height: 840rpx;
-  margin-left: 60rpx;
+  width: 616rpx;
+  height: 784rpx;
+  margin-left: 67rpx;
 }
 
 .rows {
-  width: 660rpx;
-  height: 15rpx;
+  width: 616rpx;
+  height: 14rpx;
   background-color: #aca095;
 }
 
 .box {
-  width: 15rpx;
-  height: 15rpx;
+  width: 14rpx;
+  height: 14rpx;
   float: left;
   background-color: #aca095;
 }

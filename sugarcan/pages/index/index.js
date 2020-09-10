@@ -55,5 +55,6 @@ Page({
       complete: function (res) {}
     })
   },
-  onLoad: function () {}
+  onLoad: function () {
+  }
 })

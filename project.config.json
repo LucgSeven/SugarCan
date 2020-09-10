@@ -1,4 +1,6 @@
 {
+  "miniprogramRoot": "./sugarcan/",
+  "cloudfunctionRoot": "./functions/",
   "description": "项目配置文件",
   "packOptions": {
     "ignore": []
@@ -45,6 +47,7 @@
   "isGameTourist": false,
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
       "current": -1,

@@ -1,5 +1,9 @@
 // pages/games/snake/snake.js
 const bgmContext = wx.createInnerAudioContext({});
+const app = getApp();
+const db = wx.cloud.database();
+const userScores = db.collection('user_score');
+
 Page({
   data: {
     touchWeight: 0,
@@ -36,10 +40,14 @@ Page({
       touchHeight: wx.getSystemInfoSync().windowHeight - 140,
     });
     let maxScore = wx.getStorageSync('snake-maxScore');
-    if (!maxScore) maxScore = 0
+    if (!maxScore) {
+      maxScore = 0
+      wx.setStorageSync('snake-maxScore', 0);
+    }
     this.setData({
       maxScore: maxScore
     });
+    this.insertOrUpdateCloudData();
     this.initGround(this.data.rows, this.data.cols);
     this.initSnake(5);
     this.creatFood();
@@ -297,7 +305,11 @@ Page({
     snake[len - 1] = [x, y];
     this.checkGame(snakeTail);
     for (let i = 1; i < len; i++) {
-      ground[snake[i][0]][snake[i][1]] = 1;
+      var a = snake[i][0];
+      var b = snake[i][1];
+      if (0 <= a && 0 <= b && a < this.data.rows && b < this.data.cols) {
+        ground[a][b] = 1;
+      }
     }
     this.setData({
       snake: snake,
@@ -314,6 +326,7 @@ Page({
       this.setData({
         notEnded: false
       })
+      this.insertOrUpdateCloudData();
     }
     if (this.eatFood(snakeHead, this.data.food)) { // 普通果实
       this.haveFood = false;
@@ -376,7 +389,8 @@ Page({
       clearInterval(this.data.timer);
       this.setData({
         notEnded: false
-      })
+      });
+      this.insertOrUpdateCloudData();
     }
   },
   checkKnock: function (snake, len, snakeHead) { // 是否碰到身体
@@ -461,5 +475,57 @@ Page({
       isMusicOn: false
     });
     bgmContext.pause();
+  },
+  insertOrUpdateCloudData() {
+    var maxScore = wx.getStorageSync('snake-maxScore');
+    if (!maxScore) {
+      return;
+    }
+    var userInfo = app.globalData.userInfo;
+
+    userScores.where({
+      gameId: '2',
+      _openid: app.globalData.openId
+    }).get({
+      success: function(res) {
+        var datas = res.data;
+        if (datas.length < 1) {
+          userScores.add({
+            data:{
+              gameId : "2",
+              gender : userInfo.gender,
+              nickName : userInfo.nickName,
+              maxScore : maxScore,
+              operateTime : new Date()
+            },
+            success: function(res) {
+            }
+          });
+          return;
+        }
+        
+        var record = datas[0];
+        if (maxScore > record.maxScore) {
+          userScores.doc(record._id).update({
+            data:{
+              maxScore : maxScore,
+              operateTime : new Date()
+            },
+            success: function(res) {
+            }
+          });
+          return;
+        } else if (maxScore != record.maxScore) {
+          wx.setStorageSync('snake-maxScore', record.maxScore);
+        }
+      }
+    })
+    
+  },
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    bgmContext.stop();
   }
 })
