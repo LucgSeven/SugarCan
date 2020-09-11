@@ -19,6 +19,14 @@ Page({
         gameName: "贪吃蛇",
         gameDesc: "这个也可以玩了！！",
         gameUrl: "/pages/games/snake/snake"
+      },
+      {
+        id: 3,
+        picUrl: "../../common/snake.png",
+        accessnum: "2",
+        gameName: "灰机大战",
+        gameDesc: "新游上线~！！！",
+        gameUrl: "/pages/games/plain/plain"
       }
     ],
     lastPageUrl: ''

@@ -33,7 +33,7 @@ App({
           wx.cloud.callFunction({
             name: 'getOpenId',
             complete: res => {
-              this.globalData.openId = res.openid;
+              this.globalData.openId = res.result.openid;
             }
           })
         }

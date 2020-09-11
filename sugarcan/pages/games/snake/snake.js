@@ -492,7 +492,7 @@ Page({
         if (datas.length < 1) {
           userScores.add({
             data:{
-              gameId : "2",
+              gameId : '2',
               gender : userInfo.gender,
               nickName : userInfo.nickName,
               maxScore : maxScore,

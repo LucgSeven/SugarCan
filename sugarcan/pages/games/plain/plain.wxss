@@ -1,0 +1,71 @@
+/* sugarcan/pages/games/plain/plain.wxss */
+page {
+  -webkit-touch-callout: none;/* 禁用系统默认菜单 */
+  -ms-touch-callout: none;
+  -webkit-user-select: none;/* css控制文字不能被选中 */
+  -moz-user-select: none;
+  -ms-user-select: none;/* 当触控事件发生在元素上时，不进行任何操作 */
+  -ms-touch-action: none;
+  touch-action: none;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+.canvas {
+  width: 100vw;
+  height: 100vh;
+}
+.modal {
+  width: 80vw;
+  height: 300px;
+  top: 20vh;
+  left: 10vw;
+  border: #666 solid 2px;
+  border-radius: 8px;
+  position: absolute;
+  font-size: 20px;
+  background-color: #dddddd;
+  z-index: 1002;
+}
+
+.header {
+  height: 45px;
+  line-height: 45px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: #666 solid 2px; 
+}
+
+.content {
+  height: 210px;
+  line-height: 210px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.footer {
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  border-top: #666 solid 2px; 
+}
+
+.footer .continueBtn {
+  width: 120px;
+  height: 42px;
+  border: #666 solid 2px;
+  border-radius: 15px;
+  font-size: 15px;
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  margin-left: -60px;
+  color: #333;
+  cursor: pointer;
+}

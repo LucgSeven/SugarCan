@@ -78,20 +78,20 @@ page {
 }
 
 .ground {
-  width: 616rpx;
-  height: 784rpx;
-  margin-left: 67rpx;
+  width: 88vw;
+  height: 112vw;
+  margin-left: 6vw;
 }
 
 .rows {
-  width: 616rpx;
-  height: 14rpx;
+  width: 88vw;
+  height: 2vw;
   background-color: #aca095;
 }
 
 .box {
-  width: 14rpx;
-  height: 14rpx;
+  width: 2vw;
+  height: 2vw;
   float: left;
   background-color: #aca095;
 }
@@ -102,54 +102,54 @@ page {
 
 .box_2 {
   background-color: green;
-  -moz-border-radius: 7.5rpx;
-  -webkit-border-radius: 7.5rpx;
-  border-radius: 7.5rpx;
+  -moz-border-radius: 1vw;
+  -webkit-border-radius: 1vw;
+  border-radius: 1vw;
 }
 
 .box_3 {
   width: 0;
   height: 0;
-  border-left: 7.5rpx solid transparent;
-  border-right: 7.5rpx solid transparent;
-  border-bottom: 15rpx solid yellow;
+  border-left: 1vw solid transparent;
+  border-right: 1vw solid transparent;
+  border-bottom: 2vw solid yellow;
 }
 
 .box_4 {
   background-color: purple;
   width: 0;
   height: 0;
-  border-left: 7.5rpx solid transparent;
-  border-right: 7.5rpx solid transparent;
-  border-top: 15rpx solid purple;
+  border-left: 1vw solid transparent;
+  border-right: 1vw solid transparent;
+  border-top: 2vw solid purple;
 
 }
 
 .box_5 {
   width: 0;
   height: 0;
-  border: 7.5rpx solid transparent;
+  border: 1vw solid transparent;
   border-bottom-color: blue;
   position: relative;
-  top: -7.5rpx;
+  top: -1vw;
 }
 
 .box_5::after {
   content: '';
   position: absolute;
-  left: -7.5rpx;
-  top: 7.5rpx;
+  left: -1vw;
+  top: 1vw;
   width: 0;
   height: 0;
-  border: 7.5rpx solid transparent;
+  border: 1vw solid transparent;
   border-top-color: blue;
 }
 
 .box_6 {
   background-color: orangered;
-  -moz-border-radius: 7.5rpx;
-  -webkit-border-radius: 7.5rpx;
-  border-radius: 7.5rpx;
+  -moz-border-radius: 1vw;
+  -webkit-border-radius: 1vw;
+  border-radius: 1vw;
 }
 
 .game-over {
